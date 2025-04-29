@@ -2,6 +2,7 @@ import Table from '../../components/Table';
 import { useUnicorns } from './context/UnicornContext';
 import { useNavigate } from 'react-router-dom';
 import { deleteUnicorn } from './services/UnicornService';
+import { Button } from 'primereact/button';
 import { useAlert } from '../../context/AlertContext';
 import AlertMessage from '../../components/AlertMessage';
 
@@ -28,6 +29,7 @@ const UnicornTableView = () => {
     return (
         <div>
             {alert && <AlertMessage type={alert.type} message={alert.message} />}
+            <Button label='Crear nuevo' className='my-3' onClick={()=>navigate('create')}/>
             <Table 
                 title={"Tabla de Unicornios"}
                 data={unicorns}

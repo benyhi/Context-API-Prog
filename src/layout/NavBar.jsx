@@ -1,16 +1,36 @@
-import { Sidebar } from 'primereact/sidebar';
-        
-const NavBar = () => {
-    return(
-        <div className="card flex justify-content-center">
-            <Sidebar visible={visible} onHide={() => setVisible(false)}>
-                <h2>Sidebar</h2>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-            </Sidebar>
-            <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+import { Menubar } from 'primereact/menubar';
+import { useNavigate } from 'react-router-dom';
+
+const Navbar = () => {
+    const navigate = useNavigate();
+
+    const items = [
+        {
+            label: 'Productos',
+            icon: 'pi pi-box',
+            command: () => navigate('/products')
+        },
+        {
+            label: 'Unicornios',
+            icon: 'pi pi-star',
+            command: () => navigate('/unicorns')
+        }
+    ];
+
+    const start = (
+        <img
+            alt="logo"
+            src="https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
+            height="40"
+            className="mr-2"
+        />
+    );
+
+    return (
+        <div className="card">
+            <Menubar model={items} start={start} />
         </div>
-    )
-}
+    );
+};
+
+export default Navbar;
