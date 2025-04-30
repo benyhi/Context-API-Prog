@@ -25,10 +25,22 @@ const UnicornTableView = () => {
         navigate(`/unicorns/edit/${unicorn._id}`);
     };
 
+    const handleExport = () => {
+        if (unicorns.length === 0) {
+            showAlert('No hay unicornios para exportar.', 'warn');
+            return;
+        }
+        generateUnicornPDF();
+        showAlert('PDF generado correctamente.', 'success');
+    }
+
     return (
         <div>
             {alert && <AlertMessage type={alert.type} message={alert.message} />}
+            <div>
             <Button label='Crear nuevo' className='my-3' onClick={()=>navigate('create')}/>
+            <Button label='Exportar datos' className='my-3 mx-2' onClick={handleExport}/>
+            </div>
             <Table 
                 title={"Tabla de Unicornios"}
                 data={unicorns}

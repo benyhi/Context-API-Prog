@@ -12,7 +12,7 @@ export const generarPDFUnicornios = (unicorns) => {
         { header: 'Nombre', dataKey: 'name' },
         { header: 'Color', dataKey: 'color' },
         { header: 'Edad', dataKey: 'age' },
-        { header: 'Poder mágico', dataKey: 'magicPower' }
+        { header: 'Poder', dataKey: 'power' }
     ];
 
     const rows = unicorns.map(unicorn => ({
