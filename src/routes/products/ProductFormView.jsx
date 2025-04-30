@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { Button } from 'primereact/button';
 import { useAlert } from '../../context/AlertContext'; 
 import ModelForm from '../../components/ModelForm';
 import * as Yup from 'yup';
@@ -79,7 +80,10 @@ const ProductFormView = () => {
 
   return (
     <div>
-      <h1>{isEditMode ? 'Editar Producto' : 'Crear Producto'}</h1>
+      <div className='flex align-items-center'>
+        <Button icon="pi pi-arrow-left" className='mr-3' onClick={() => navigate('/products')}/>
+        <h1>{isEditMode ? 'Editar Producto' : 'Crear Producto'}</h1>
+      </div>
 
       <ModelForm 
         initialValues={initialValues}

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'primereact/button';
 import { getAllProducts, deleteProduct } from './services/ProductService';
-import { useEffect, useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
 import { useAlert } from '../../context/AlertContext'; 
 import AlertMessage from '../../components/AlertMessage';
 import Table from '../../components/Table';
@@ -43,6 +44,7 @@ const ProductTableView = () => {
     return (
         <div>
             {alert && <AlertMessage type={alert.type} message={alert.message} />}
+            <Button label='Crear nuevo' className='my-3' onClick={()=>navigate('create')}/>
             <Table 
                 title={"Tabla de Productos"}
                 data={products} 

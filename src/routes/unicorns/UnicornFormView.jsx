@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { Button } from 'primereact/button';
 import ModelForm from '../../components/ModelForm';
 import * as Yup from 'yup';
 import { useUnicorns } from './context/UnicornContext';
@@ -78,7 +79,10 @@ const UnicornFormView = () => {
 
   return (
     <div>
-      <h1>{isEditMode ? 'Editar Unicornio' : 'Crear Unicornio'}</h1>
+      <div className='flex align-items-center'>
+        <Button icon="pi pi-arrow-left" className='mr-3' onClick={() => navigate('/unicorns')}/>
+        <h1>{isEditMode ? 'Editar Producto' : 'Crear Producto'}</h1>
+      </div>
       <ModelForm 
         initialValues={initialValues}
         validationSchema={validationSchema}
