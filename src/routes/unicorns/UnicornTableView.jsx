@@ -1,12 +1,11 @@
 import Table from '../../components/Table';
 import { useUnicorns } from './context/UnicornContext';
 import { useNavigate } from 'react-router-dom';
-import { deleteUnicorn } from './services/UnicornService';
 import { useAlert } from '../../context/AlertContext';
 import AlertMessage from '../../components/AlertMessage';
 
 const UnicornTableView = () => {
-    const { unicorns, getUnicorns } = useUnicorns();
+    const { unicorns, getUnicorns, deleteUnicorn, generateUnicornPDF } = useUnicorns();
     const { alert, showAlert } = useAlert(); 
     const navigate = useNavigate();
 

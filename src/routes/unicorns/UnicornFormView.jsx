@@ -3,11 +3,10 @@ import { useState, useEffect } from 'react';
 import ModelForm from '../../components/ModelForm';
 import * as Yup from 'yup';
 import { useUnicorns } from './context/UnicornContext';
-import { createUnicorn, updateUnicorn } from './services/UnicornService';
 import { useAlert } from '../../context/AlertContext';
 
 const UnicornFormView = () => {
-  const { getUnicornById, getUnicorns } = useUnicorns();
+  const { getUnicornById, getUnicorns, createUnicorn, updateUnicorn } = useUnicorns();
   const { showAlert } = useAlert();
   const navigate = useNavigate();
   const { id } = useParams(); 

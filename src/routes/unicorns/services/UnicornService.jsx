@@ -1,70 +1,58 @@
+import axios from 'axios';
+
 const API_URL = 'http://127.0.0.1:5000/unicorns';
 
 export const getAllUnicorn = async () => {
-    const response = await fetch(`${API_URL}`);
-
-    if (!response.ok) {
-        throw new Error('Error fetching unicorns');
+    try {
+        const response = await axios.get(API_URL);
+        return response.data;
+    } catch (error) {
+        throw new Error('Error al obtener la lista de unicornios');
     }
-
-    const data = await response.json();
-    return data;
-}
+};
 
 export const getUnicornByIdService = async (id) => {
-    const response = await fetch(`${API_URL}/${id}`);
-
-    if (!response.ok) {
-        throw new Error('Error fetching unicorn by ID');
+    try {
+        const response = await axios.get(`${API_URL}/${id}`);
+        return response.data;
+    } catch (error) {
+        throw new Error('Error al obtener el unicornio por ID');
     }
-
-    const data = await response.json();
-    return data;
-}
+};
 
 export const createUnicorn = async (unicorn) => {
-    console.log(unicorn)
-    const response = await fetch(`${API_URL}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(unicorn)
-    });
-
-    if (!response.ok) {
-        throw new Error('Error creating unicorn');
+    try {
+        console.log(unicorn);
+        const response = await axios.post(API_URL, unicorn, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error('Error al crear el unicornio');
     }
-
-    const data = await response.json();
-    return data;
-}
+};
 
 export const updateUnicorn = async (id, unicorn) => {
-    console.log(unicorn)
-    const response = await fetch(`${API_URL}/${id}`, {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(unicorn)
-    });
-
-    if (!response.ok) {
-        throw new Error('Error updating unicorn');
+    try {
+        console.log(unicorn);
+        const response = await axios.put(`${API_URL}/${id}`, unicorn, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        return response.data;
+    } catch (error) {
+        throw new Error('Error al actualizar el unicornio');
     }
-
-    const data = await response.json();
-    return data;
-}
+};
 
 export const deleteUnicorn = async (id) => {
-    const response = await fetch(`${API_URL}/${id}`, {
-        method: 'DELETE'
-    });
-
-    if (!response.ok) {
-        throw new Error('Error deleting unicorn');
+    try {
+        await axios.delete(`${API_URL}/${id}`);
+        return true;
+    } catch (error) {
+        throw new Error('Error al eliminar el unicornio');
     }
-    return response.ok;
-}
+};
